@@ -61,3 +61,21 @@ session_start();
 
 </body>
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const { createClient } = supabase;
+  const supabaseClient = createClient('https://mqvbbcickgnsxzpdaarv.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1xdmJiY2lja2duc3h6cGRhYXJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzMDM4ODIsImV4cCI6MjA2ODg3OTg4Mn0.6FlcPgW4vNNmIl8YCvx58P_NPK61-ONNek2AeM0GRe8');
+
+  async function getUsers() {
+    let { data, error } = await supabaseClient.from('usuarios').select('*');
+    if (error) {
+      console.error('Error al obtener usuarios:', error);
+    } else {
+      console.log('Usuarios:', data);
+    }
+  }
+
+  getUsers();
+</script>
+
